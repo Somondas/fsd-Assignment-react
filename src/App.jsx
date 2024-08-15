@@ -1,11 +1,13 @@
 import { useState } from "react";
+import AppLayout from "./components/AppLayout";
+import Home from "./pages/Home";
 
-function App() {
+const App = () => {
   return (
-    <div className="">
-      <h1>Hello World</h1>
-    </div>
+    <>
+      <Home />
+    </>
   );
-}
+};
 
 export default App;
