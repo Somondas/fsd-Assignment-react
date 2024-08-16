@@ -1,7 +1,19 @@
 import React from "react";
 import Heading from "./Heading";
 import WindowOutlinedIcon from "@mui/icons-material/WindowOutlined";
+import { Link } from "react-router-dom";
 
+// >> tabs constant
+const tabs = [
+  {
+    name: "Overview",
+    path: "/",
+  },
+  {
+    name: "People Directory",
+    path: "/people",
+  },
+];
 const AppLayout = () => (WrappedComponent) => {
   return (props) => {
     return (
@@ -13,15 +25,20 @@ const AppLayout = () => (WrappedComponent) => {
         >
           <div className=" col-span-2 p-4 ">
             {/* Navigation */}
-
-            <div className="flex  items-center text-purple-600 text-lg font-semibold p-1">
-              <WindowOutlinedIcon fontSize="medium" />
-              <h2>Overview</h2>
-            </div>
-            <div className="flex  items-center text-purple-600 text-lg font-semibold p-1">
-              <WindowOutlinedIcon fontSize="medium" />
-              <h2>People Directory</h2>
-            </div>
+            {tabs.map((tab) => (
+              <Link className="text-gray-600" key={tab.path} to={tab.path}>
+                <div
+                  className={`flex  items-center 
+                    ${
+                      location.pathname === tab.path && "text-purple-600"
+                    } text-lg font-semibold p-1`}
+                >
+                  <WindowOutlinedIcon fontSize="medium" />
+                  <h2>{tab.name}</h2>
+                </div>
+              </Link>
+            ))}
+            <button></button>
           </div>
           <div className=" col-span-10">
             <WrappedComponent />
