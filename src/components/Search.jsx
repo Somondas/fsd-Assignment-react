@@ -7,7 +7,7 @@ const Search = () => {
         type="search"
         name="serch"
         placeholder="Search"
-        class="bg-white rounded-sm  h-10 px-2 border border-b-gray-700  text-lg focus:outline-none"
+        className="bg-white rounded-sm  h-10 px-2 border border-b-gray-700  text-lg focus:outline-none"
       />
     </div>
   );
