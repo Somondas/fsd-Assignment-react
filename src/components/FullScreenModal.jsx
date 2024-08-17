@@ -1,8 +1,7 @@
 import { Add } from "@mui/icons-material";
-import React, { useRef, useState } from "react";
-import { data } from "../sampleData/sampleData";
-import ReplayIcon from "@mui/icons-material/Replay";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import ReplayIcon from "@mui/icons-material/Replay";
+import React, { useRef, useState } from "react";
 import Select from "react-select";
 const FullScreenModal = () => {
   const [isOpen, setIsOpen] = useState(false);

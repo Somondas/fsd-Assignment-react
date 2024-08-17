@@ -1,27 +1,13 @@
-import React, { useRef, useState } from "react";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import {
-  useReactTable,
+  flexRender,
   getCoreRowModel,
   getSortedRowModel,
-  flexRender,
+  useReactTable,
 } from "@tanstack/react-table";
-import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
-import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
-import DeleteModal from "./DeleteModal";
+import React, { useRef, useState } from "react";
 const TableComponent = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const modalRef = useRef(null);
-
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
-
-  // Function to handle clicks outside the dialog box
-  const handleOutsideClick = (e) => {
-    if (modalRef.current && !modalRef.current.contains(e.target)) {
-      closeModal();
-    }
-  };
-
   const data = React.useMemo(
     () => [
       {
@@ -157,10 +143,7 @@ const TableComponent = () => {
             <button className="text-gray-400 hover:text-gray-600">
               <ModeEditOutlineOutlinedIcon />
             </button>
-            <button
-              className="text-gray-400 hover:text-gray-600"
-              onClick={openModal}
-            >
+            <button className="text-gray-400 hover:text-gray-600">
               <DeleteOutlinedIcon />
             </button>
           </div>

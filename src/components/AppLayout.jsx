@@ -1,7 +1,7 @@
-import React from "react";
-import Heading from "./Heading";
 import WindowOutlinedIcon from "@mui/icons-material/WindowOutlined";
+import React from "react";
 import { Link } from "react-router-dom";
+import Heading from "./Heading";
 
 // >> tabs constant
 const tabs = [
