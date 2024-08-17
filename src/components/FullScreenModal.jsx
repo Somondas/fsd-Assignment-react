@@ -190,12 +190,21 @@ const FullScreenModal = () => {
                 </div>
               </div>
             </div>
-            <button
-              className="px-4 py-2 bg-red-500 text-white rounded"
-              onClick={closeModal}
-            >
-              Close
-            </button>
+            {/* Buttons */}
+            <div className="flex justify-end mt-4">
+              <button
+                className="uppercase border font-bold px-2  text-gray-700 rounded-sm mr-2"
+                onClick={closeModal}
+              >
+                Cancel
+              </button>
+              <button
+                className="uppercase  font-bold px-2 py-3 text-gray-400 rounded-sm mr-2"
+                onClick={closeModal}
+              >
+                Save
+              </button>
+            </div>
           </div>
         </div>
       )}
