@@ -5,7 +5,8 @@ import {
   getSortedRowModel,
   flexRender,
 } from "@tanstack/react-table";
-
+import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 const TableComponent = () => {
   const data = React.useMemo(
     () => [
@@ -140,10 +141,10 @@ const TableComponent = () => {
         cell: () => (
           <div className="flex space-x-2">
             <button className="text-gray-400 hover:text-gray-600">
-              <i className="fas fa-edit"></i>
+              <ModeEditOutlineOutlinedIcon />
             </button>
             <button className="text-gray-400 hover:text-gray-600">
-              <i className="fas fa-trash"></i>
+              <DeleteOutlinedIcon />
             </button>
           </div>
         ),
