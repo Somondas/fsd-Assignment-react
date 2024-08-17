@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { data } from "../sampleData/sampleData";
 import ReplayIcon from "@mui/icons-material/Replay";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
-
+import Select from "react-select";
 const FullScreenModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
@@ -25,6 +25,23 @@ const FullScreenModal = () => {
       setFileName("");
     }
   };
+  const [selectedTeams, setSelectedTeams] = useState([
+    { value: "design", label: "Design" },
+    { value: "product", label: "Product" },
+    { value: "marketing", label: "Marketing" },
+    { value: "finance", label: "Finance" },
+  ]);
+
+  const handleTeamChange = (selectedOptions) => {
+    setSelectedTeams(selectedOptions);
+  };
+
+  const teamOptions = [
+    { value: "design", label: "Design" },
+    { value: "product", label: "Product" },
+    { value: "marketing", label: "Marketing" },
+    { value: "finance", label: "Finance" },
+  ];
   return (
     <div>
       {/* Button to open the modal */}
@@ -49,7 +66,7 @@ const FullScreenModal = () => {
             <div className="w-20 h-20  mx-auto rounded-full overflow-hidden mb-4">
               <img
                 className="rounded-full w-full  h-full object-cover"
-                src={data[6].avatar}
+                src={"https://avatars.githubusercontent.com/u/1774007"}
                 alt=""
               />
             </div>
@@ -82,15 +99,97 @@ const FullScreenModal = () => {
                 Remove Photo
               </label>
             </div>
-            {/* form */}
-            <div>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                }}
-              ></form>
+            {/* Form */}
+            <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {/* Name Field */}
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="mt-1 block w-full bg-white rounded-sm  h-10 px-2 border border-b-gray-700  text-lg focus:outline-none"
+                    placeholder="Olivia Rhye"
+                  />
+                </div>
+
+                {/* Email Field */}
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="mt-1 block w-full bg-white rounded-sm  h-10 px-2 border border-b-gray-700  text-lg focus:outline-none"
+                    placeholder="Oliviarhye@email.com"
+                  />
+                </div>
+
+                {/* Role Field */}
+                <div>
+                  <label
+                    htmlFor="role"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Role
+                  </label>
+                  <select
+                    id="role"
+                    className="mt-1 block w-full bg-white rounded-sm  h-10 px-2 border border-b-gray-700  text-lg focus:outline-none"
+                  >
+                    <option>Product Designer</option>
+                    <option>Developer</option>
+                    <option>Manager</option>
+                  </select>
+                </div>
+
+                {/* Status Field */}
+                <div>
+                  <label
+                    htmlFor="status"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Status
+                  </label>
+                  <select
+                    id="status"
+                    className="mt-1 block w-full bg-white rounded-sm  h-10 px-2 border border-b-gray-700  text-lg focus:outline-none"
+                  >
+                    <option>Active</option>
+                    <option>Inactive</option>
+                  </select>
+                </div>
+
+                {/* Teams Field */}
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="teams"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Teams
+                  </label>
+                  <Select
+                    id="teams"
+                    isMulti
+                    value={selectedTeams}
+                    onChange={handleTeamChange}
+                    options={teamOptions}
+                    className="mt-1"
+                    classNamePrefix="react-select"
+                    placeholder="Select teams..."
+                  />
+                </div>
+              </div>
             </div>
-            <p className="mb-4">This is a dialog content.</p>
             <button
               className="px-4 py-2 bg-red-500 text-white rounded"
               onClick={closeModal}
