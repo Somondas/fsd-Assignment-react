@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -7,7 +7,21 @@ import {
 } from "@tanstack/react-table";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import DeleteModal from "./DeleteModal";
 const TableComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const modalRef = useRef(null);
+
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
+
+  // Function to handle clicks outside the dialog box
+  const handleOutsideClick = (e) => {
+    if (modalRef.current && !modalRef.current.contains(e.target)) {
+      closeModal();
+    }
+  };
+
   const data = React.useMemo(
     () => [
       {
@@ -143,7 +157,10 @@ const TableComponent = () => {
             <button className="text-gray-400 hover:text-gray-600">
               <ModeEditOutlineOutlinedIcon />
             </button>
-            <button className="text-gray-400 hover:text-gray-600">
+            <button
+              className="text-gray-400 hover:text-gray-600"
+              onClick={openModal}
+            >
               <DeleteOutlinedIcon />
             </button>
           </div>

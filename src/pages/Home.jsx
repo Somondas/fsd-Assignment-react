@@ -3,6 +3,7 @@ import AppLayout from "../components/AppLayout";
 
 const Home = () => {
   // ! The site is not for small screens
+  // ! The site is not complete yet due to time constraints
   return (
     <div className="w-full  h-full  p-4 ">
       <div className="w-full h-full border-2 rounded-lg">
