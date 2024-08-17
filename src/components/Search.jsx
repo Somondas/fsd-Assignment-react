@@ -2,7 +2,7 @@ import React from "react";
 
 const Search = () => {
   return (
-    <div class=" text-gray-600">
+    <div className=" text-gray-600">
       <input
         type="search"
         name="serch"
